@@ -11,5 +11,7 @@ const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 console.log(`handing in entry: ${ENTRY_NAME}`);
 mkdirSync(out, { recursive: true });
-copyFileSync(join(here, 'entry.png'), join(out, 'entry.png'));
-console.log('entry.png written to', join(out, 'entry.png'));
+const target = join(out, 'entry.png');
+copyFileSync(join(here, 'entry.png'), target);
+// sanity: report what was handed in, so a grader log names the image even if it is later replaced
+console.log('entry.png written to', target);
